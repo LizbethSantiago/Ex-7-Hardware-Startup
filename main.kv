@@ -1,0 +1,95 @@
+<MainScreen>:
+    #: import time __main__.time
+
+    name: 'main'
+    stepper_motor_button: stepper_motor_button
+    change_direct: change_direct
+    cute_slider:  cute_slider
+    mcqueen_label:  mcqueen_label
+    make_me_speedy: make_me_speedy
+    shy_button: shy_button
+    i_get_position:  i_get_position
+
+
+
+    FloatLayout:
+        size_hint: None, None
+
+
+    DPEAButton:
+        id: stepper_motor_button
+        text: "emo"
+        size: 250, 250
+        x: root.width * 0.25
+        y: root.height * 0.5
+        color: 0, 0, 0, 1
+        on_press: root.start_stepper()
+        on_release: root.stop_stepper()
+
+    DPEAButton:
+        id: change_direct
+        text: "anti-emo"
+        size: 250, 250
+        x: root.width * 0.65
+        y: root.height * 0.5
+        color: 250/255, 70/255, 228/255, 1
+        on_press: root.change()
+        on_release: root.stop_stepper()
+
+    Slider:
+        id: cute_slider
+        size_hint: 0.9, 0.1
+        min: 1
+        max: 10
+        step: 1
+        value:2
+        orientation: 'horizontal'
+        x: root.width * 0.1
+        y: root.height * 0.1
+        on_value: root.slider_speed()
+
+    Label:
+        id: mcqueen_label
+        text: str(cute_slider.value)
+        size_hint: None, None
+        font_size: 80
+        x: root.width * 0.5
+        y: root.height * 0.2
+        color: 1, 1, 1, .7
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 250/255, 70/255, 228/255, 1
+
+    Label:
+        id: make_me_speedy
+        text: "^ make me speedy pls ^"
+        size_hint: None, None
+        font_size: 50
+        x: root.width * 0.5
+        y: root.height * 0.05
+        color: 1, 1, 1, .7
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 250/255, 70/255, 228/255, 1
+
+    DPEAButton:
+        id: shy_button
+        text: "shy"
+        size: 95, 95
+        x: root.width * 0.9
+        y: root.height * 0.9
+        color: 192/255, 121/255, 244/255, 1
+        on_press: root.shy_thread()
+
+
+    Label:
+        id: i_get_position
+        text: "i get position -->"
+        size_hint: None, None
+        font_size: 50
+        x: root.width * 0.75
+        y: root.height * 0.9
+        color: 1, 1, 1, 1
+        bold: True
+        outline_width: self.font_size * 0.1
+        outline_color: 192/255, 121/255, 244/255, 1
